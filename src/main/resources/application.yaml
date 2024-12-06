@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: shed
+  r2dbc:
+    url: r2dbc:postgresql://${R2DBC_USERNAME}:${R2DBC_PASSWORD}@${R2DBC_URL}
+    username: ${R2DBC_USERNAME}
+    password: ${R2DBC_PASSWORD}
+
+server:
+  port: 9000
