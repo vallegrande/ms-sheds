@@ -7,6 +7,7 @@ import pe.edu.vallegrande.shed.service.ShedService;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/sheds")
 public class ShedRest {

@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: chumpitazkasandra/sheds
+    ports:
+      - "8085:9000"
+    environment:
+      - R2DBC_URL=r2dbc:postgresql://ep-icy-sunset-a578ej1o.us-east-2.aws.neon.tech/shed?sslmode=require
