@@ -1,3 +1,7 @@
+#docker build -t chumpitazkasandra/backshed .
+#docker-compose build
+#docker login -u chumpitazkasandra
+#docker push chumpitazkasandra/backshed:latest
 version: '3'
 
 services:
@@ -5,8 +9,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: chumpitazkasandra/sheds
+    image: chumpitazkasandra/backshed
     ports:
       - "8085:9000"
     environment:
-      - R2DBC_URL=r2dbc:postgresql://ep-icy-sunset-a578ej1o.us-east-2.aws.neon.tech/shed?sslmode=require
+      - R2DBC_URL=${R2DBC_URL}
+      - R2DBC_USERNAME=${R2DBC_USERNAME}
+      - R2DBC_PASSWORD=${R2DBC_PASSWORD}
