@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: kasandra-chumpitaz-service
+  name: backend-kasandra-chumpitaz-service
   namespace: kasandra-chumpitaz-namespace
 spec:
-  type: NodePort  # Tipo de servicio NodePort para acceso externo
+  type: NodePort
   ports:
-    - protocol: TCP
-      port: 80  # Puerto que se usará para acceder desde fuera del clúster
-      targetPort: 8080  # Puerto del backend dentro del contenedor
-      nodePort: 30001  # Puerto expuesto en el nodo
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30080  # External port on the node
+  selector:
+    app: backend-kasandra-chumpitaz

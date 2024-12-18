@@ -1,18 +1,16 @@
-FROM openjdk:17-jdk
-
-# Establece el directorio de trabajo dentro del contenedor
+FROM maven:3.9.0-eclipse-temurin-17 AS builder
 WORKDIR /app
+COPY pom.xml ./
+COPY src ./src
+RUN mvn clean install -DskipTests
 
-# Copia el archivo JAR generado en el contenedor
-COPY target/*.jar app.jar
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY --from=builder /app/target/*.jar app.jar
 
-# Variables de entorno necesarias para tu aplicación
-ENV R2DBC_URL=${R2DBC_URL}
-ENV R2DBC_USERNAME=${R2DBC_USERNAME}
-ENV R2DBC_PASSWORD=${R2DBC_PASSWORD}
+ENV R2DBC_URL=${R2DBC_URL} \
+    R2DBC_USERNAME=${R2DBC_USERNAME} \
+    R2DBC_PASSWORD=${R2DBC_PASSWORD}
 
-# Expone el puerto 8080 que usa tu aplicación
 EXPOSE 8080
-
-# Comando de entrada para ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "app.jar"]

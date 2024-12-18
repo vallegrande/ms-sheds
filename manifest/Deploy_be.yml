@@ -4,31 +4,31 @@ metadata:
   name: backend-kasandra-chumpitaz-deployment
   namespace: kasandra-chumpitaz-namespace
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: backend-kasandra-chumpitaz-deployment
+      app: backend-kasandra-chumpitaz
   template:
     metadata:
       labels:
-        app: backend-kasandra-chumpitaz-deployment
+        app: backend-kasandra-chumpitaz
     spec:
       containers:
-      - name: backend-container
-        image: chumpitazkasandra/backsheds
-        env:
-          - name: db-host
-            valueFrom:
-              configMapKeyRef:
-                name: kasandra-chumpitaz-configmap
-                key: db-host
-          - name: db-username
-            valueFrom:
-              configMapKeyRef:
-                name: kasandra-chumpitaz-configmap
-                key: db-username
-          - name: db-password
-            valueFrom:
-              secretKeyRef:
-                name: kasandra-chumpitaz-secret
-                key: db-password
+        - name: backend-container
+          image: chumpitazkasandra/backsheds:latest
+          env:
+            - name: R2DBC_URL
+              valueFrom:
+                secretKeyRef:
+                  name: backend-kasandra-chumpitaz-secret
+                  key: R2DBC_URL
+            - name: R2DBC_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: backend-kasandra-chumpitaz-secret
+                  key: R2DBC_USERNAME
+            - name: R2DBC_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: backend-kasandra-chumpitaz-secret
+                  key: R2DBC_PASSWORD
