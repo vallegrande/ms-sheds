@@ -13,6 +13,6 @@ services:
     ports:
       - "8081:8080"
     environment:
-      - R2DBC_URL=${R2DBC_URL}
-      - R2DBC_USERNAME=${R2DBC_USERNAME}
-      - R2DBC_PASSWORD=${R2DBC_PASSWORD}
+      - R2DBC_URL=r2dbc:postgresql://ep-icy-sunset-a578ej1o.us-east-2.aws.neon.tech/shed?sslmode=require
+      - R2DBC_USERNAME=shed_owner
+      - R2DBC_PASSWORD=LtCjN8zZmUa1

@@ -2,9 +2,9 @@ spring:
   application:
     name: shed
   r2dbc:
-    url: ${R2DBC_URL}
-    username: ${R2DBC_USERNAME}
-    password: ${R2DBC_PASSWORD}
+    url: ${R2DBC_URL:r2dbc:postgresql://localhost:5432/shed?sslmode=require}
+    username: ${R2DBC_USERNAME:shed_owner}
+    password: ${R2DBC_PASSWORD:default_password}
 
 springdoc:
   swagger-ui:

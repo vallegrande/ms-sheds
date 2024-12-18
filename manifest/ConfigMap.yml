@@ -8,5 +8,3 @@ data:
   db-host: r2dbc:postgresql://ep-icy-sunset-a578ej1o.us-east-2.aws.neon.tech/shed?sslmode=require
   db-username: shed_owner
   db-password: LtCjN8zZmUa1
-  api-key: 12345-ABCDE
-  feature-x-enabled: "true"
