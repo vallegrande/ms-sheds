@@ -21,10 +21,38 @@ spec:
         resources:
           requests:
             memory: "100Mi"
-            cpu: "500m"   # 0.5 CPU
+            cpu: "500m"
           limits:
             memory: "200Mi"
             cpu: "1"
-        envFrom:    # Configuración del ConfigMap
-        - configMapRef:
-            name: kasandra-chumpitaz-configmap
+        env:
+          - name: app-config
+            valueFrom:
+              configMapKeyRef:
+                name: kasandra-chumpitaz-configmap
+                key: app-config
+          - name: db-host
+            valueFrom:
+              configMapKeyRef:
+                name: kasandra-chumpitaz-configmap
+                key: db-host
+          - name: db-username
+            valueFrom:
+              configMapKeyRef:
+                name: kasandra-chumpitaz-configmap
+                key: db-username
+          - name: db-password
+            valueFrom:
+              configMapKeyRef:
+                name: kasandra-chumpitaz-configmap
+                key: db-password
+          - name: api-key
+            valueFrom:
+              configMapKeyRef:
+                name: kasandra-chumpitaz-configmap
+                key: api-key
+          - name: feature-x-enabled
+            valueFrom:
+              configMapKeyRef:
+                name: kasandra-chumpitaz-configmap
+                key: feature-x-enabled
