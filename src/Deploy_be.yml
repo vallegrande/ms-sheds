@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-kasandra-chumpitaz-deployment
+  namespace: kasandra-chumpitaz-namespace
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend-kasandra-chumpitaz-deployment
+  template:
+    metadata:
+      labels:
+        app: backend-kasandra-chumpitaz-deployment
+    spec:
+      containers:
+      - name: backend-container
+        image: chumpitazkasandra/backsheds:latest  # Imagen correcta
+        ports:
+        - containerPort: 8080  # Puerto del servicio Spring
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "500m"   # 0.5 CPU
+          limits:
+            memory: "200Mi"
+            cpu: "1"
+        envFrom:    # Configuración del ConfigMap
+        - configMapRef:
+            name: kasandra-chumpitaz-configmap

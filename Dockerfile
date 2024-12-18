@@ -11,8 +11,8 @@ ENV R2DBC_URL=${R2DBC_URL}
 ENV R2DBC_USERNAME=${R2DBC_USERNAME}
 ENV R2DBC_PASSWORD=${R2DBC_PASSWORD}
 
-# Expone el puerto 9000 que usa tu aplicación
-EXPOSE 9000
+# Expone el puerto 8080 que usa tu aplicación
+EXPOSE 8080
 
 # Comando de entrada para ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "app.jar"]
