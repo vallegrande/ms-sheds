@@ -10,5 +10,3 @@ spec:
       port: 80  # Puerto que se usará para acceder desde fuera del clúster
       targetPort: 8080  # Puerto del backend dentro del contenedor
       nodePort: 30001  # Puerto expuesto en el nodo
-  selector:
-    app: backend-kasandra-chumpitaz-deployment  # Asegura que se asocie con el Deployment del backend

@@ -3,8 +3,8 @@ kind: ConfigMap
 metadata:
   name: kasandra-chumpitaz-configmap
   namespace: kasandra-chumpitaz-namespace
+type: Opaque
 data:
-  app-config: activo
-  db-host: r2dbc:postgresql://ep-icy-sunset-a578ej1o.us-east-2.aws.neon.tech/shed?sslmode=require
-  db-username: shed_owner
-  db-password: LtCjN8zZmUa1
+  db-host: cjJkYmM6cG9zdGdyZXNxbDovL2VwLWljeS1zdW5zZXQtYTU3OGVqMW8udXMtZWFzdC0yLmF3cy5uZW9uLnRlY2gvc2hlZD9zc2xtb2RlPXJlcXVpcmU=
+  db-username: ^[[3~c2hlZF9vd25lcg==
+  db-password: THRDak44elptVWEx
